@@ -1,0 +1,18 @@
+page{
+  background: #121a21;
+  text-align: center
+}
+.logo image{
+  width: 480rpx;
+  height: 220rpx;
+}
+.btns{
+
+}
+.btns .item{
+  margin-top: 18rpx;
+}
+.btns .item image{
+  width: 272rpx;
+  height: 96rpx;
+}

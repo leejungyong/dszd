@@ -1,0 +1,17 @@
+
+page{
+  background: var(--background-black);
+}
+.btn-box{
+  margin-top: 70rpx;
+}
+.scan-btn{
+  width: 350rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  border-radius: 10rpx;
+  background-color: rgba(56, 181, 54, 1);
+  text-align: center;
+  color: #fff;
+  font-size: 44rpx;
+}

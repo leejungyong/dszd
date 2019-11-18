@@ -1,0 +1,5 @@
+<view class="holder">
+  <view class="dot" bindtouchstart="start" bindtouchend="end"></view>
+  <view class="pulse {{end?'pause':''}} {{start?'play':''}}"></view>
+  <view class="pulse1 {{end?'pause':''}}{{start?'play1':''}}"></view>
+</view>

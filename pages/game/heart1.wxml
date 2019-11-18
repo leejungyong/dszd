@@ -1,0 +1,24 @@
+<!--pages/game/heart1.wxml-->
+<view class='panel_root'>
+  <view class='view_top' animation="{{animation1}}">
+    <image class='img_top' src='{{img_url}}'></image>
+    <view class='win_line_top' style="display:{{bar_state==1?'block':'none'}}"></view>
+  </view>
+  <view class='view_bottom' animation="{{animation2}}">
+    <view class='win_line_bottom' style="display:{{bar_state==1?'block':'none'}}"></view>
+    <image class='img_bottom' src='{{img_url}}'></image>
+    <view class='panel_bottom'>
+      <view class='panel_content' style="display:{{bar_state==0?'block':'none'}}">
+        <!-- <view class='panel_loading' style="display:{{hasResult==0?'block':'none'}}">
+          <image class='img_loading' src='{{loading}}'></image>
+          <text class='text_lable'>正在加载，请稍候</text>
+        </view> -->
+          <view class="tip" bindtap="to" >摇一摇
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<audio src="{{audio1}}" id="myAudio"></audio>
+<button bindtap="toScore">成绩</button>

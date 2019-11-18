@@ -1,0 +1,12 @@
+<view class="swiper"></view>
+<view class='box'>
+  <view class="img-holder" wx:for="{{list}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="toTeamEdit">
+    <image src="{{item.pic}}?{{stamp}}" ></image>
+    <view>{{item.name}}</view>
+    </view>
+    <!-- <view style="clear:both;"></view> -->
+  <view class='add' bindtap='toAddTeam' wx:if='{{actmode<2}}'>
+      ＋
+    </view>
+</view>
+

@@ -1,0 +1,88 @@
+<!--pages/game/borrow.wxml-->
+
+
+<view wx:if="{{type==0}}">
+  <view class="borrow">
+    <view>
+      <view class="text star">
+        借入金额
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" bindinput="updateMoney"></input>
+    </view>
+    <view style="margin-top:20rpx;">
+      <view class="text star">
+        利率%
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" value="{{sysrate}}" disabled="true"></input>
+    </view>
+
+    <view style="margin-top:50rpx;">
+      <view class="text star">
+        还款时间
+      </view>
+        <view class="input" >
+        下一阶段
+      </view>
+      <!-- <view class="input" bindtap="showSelect">
+        {{currentSelect}}
+      </view> -->
+      <!-- <view class="select-box" hidden="{{!show}}">
+        <view bindtap="chooseOne" class="select-item" wx:for="{{period}}" wx:key="{{index}}" data-idx="{{index}}">{{item.name}}</view>
+      </view> -->
+    </view>
+    <view style="margin-top:50rpx;">
+      <view class="com">总利息:{{interest}}</view>
+      <view class="com">总还款金额:{{total}}</view>
+    </view>
+  </view>
+  <view>
+    <button class="btn" bindtap="sureSys">确定</button>
+  </view>
+</view>
+<view wx:elif="{{type==1}}">
+  <view class="borrow">
+    <view>
+      <view class="text star">
+        借入金额
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" bindinput="updateMoney"></input>
+    </view>
+    <view style="margin-top:20rpx;">
+      <view class="text star">
+        利率%
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" bindinput="updateRate"></input>
+    </view>
+    <!-- <view style="margin-top:20rpx;">
+      <view class="text star">
+        贷款方
+      </view>
+      <view class="radio">家族</view>
+
+    </view> -->
+
+
+    <view style="margin-top:50rpx;">
+      <view class="text star">
+        还款时间
+      </view>
+       <view class="input">
+下一阶段      </view>
+      <!-- <view class="input" bindtap="showSelect">
+        {{currentSelect}}
+      </view>
+      <view class="select-box" hidden="{{!show}}">
+        <view bindtap="chooseOne" class="select-item" wx:for="{{period}}" wx:key="{{index}}" data-idx="{{index}}">{{item.name}}</view>
+      </view> -->
+    </view>
+    <view style="margin-top:50rpx;">
+      <view class="com">总利息:{{interest}}</view>
+      <view class="com">总还款金额:{{total}}</view>
+    </view>
+
+
+  </view>
+  <view>
+    <button class="btn" bindtap="sureFamily">确定</button>
+  </view>
+</view>

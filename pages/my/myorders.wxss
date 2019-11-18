@@ -1,0 +1,40 @@
+/* pages/my/myorders.wxss */
+
+page {
+  background: var(--background-black);
+}
+
+.pick {
+  color: var(--yellow);
+  height: 90rpx;
+  line-height: 90rpx;
+  background: var(--blue);
+  padding-left: 20rpx;
+}
+
+.list {
+  color: var(--word-color);
+}
+
+.list .item {
+  height: 80rpx;
+  line-height: 80rpx;
+  background: var(--blue);
+  margin-top: 20rpx;
+}
+
+.list .item .date {
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+}
+
+.list .item .name {
+  width: 50%;
+  display: inline-block;
+}
+
+.list .item .price {
+  width: 20%;
+  display: inline-block;
+}

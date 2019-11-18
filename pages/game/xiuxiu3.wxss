@@ -1,0 +1,26 @@
+/* pages/game/xiuxiu3.wxss */
+.text{
+  color: var(--yellow);
+  font-size: 40rpx;
+  text-align: center;
+  margin-top: 140rpx;
+}
+.mbox,.ybox{
+  width: 220rpx;
+  /* height: 660rpx; */
+  border-radius: 10rpx;
+  background-color: rgba(28, 48, 67, 1);
+  text-align: center;
+  border: 1rpx solid var(--yellow);
+  color: var(--yellow);
+}
+.box .act-img{
+  height: 120rpx;
+}
+.mbox .bf image{
+  width: 220rpx;
+  height: 360rpx;
+}
+.box .text{
+  height: 60rpx;
+}

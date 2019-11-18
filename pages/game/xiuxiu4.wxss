@@ -1,0 +1,31 @@
+/* pages/game/xiuxiu4.wxss */
+.box{
+  width: 220rpx;
+  /* height: 490rpx; */
+  line-height: 20px;
+  border-radius: 10rpx;
+  background-color: #1C3043;
+  text-align: center;
+  border: 1rpx solid var(--yellow);
+  margin: 100rpx auto 0 auto;
+}
+.success{
+  text-align: center;
+  font-size: 40rpx;
+ color: var(--yellow);
+ margin-top: 140rpx;
+}
+
+.detail{
+  text-align: center;
+  font-size: 30rpx;
+  color: var(--yellow);
+  margin-top: 26rpx;
+}
+.act-img{
+  height: 90rpx;
+}
+
+.bf-img{
+  height: 190rpx;
+}

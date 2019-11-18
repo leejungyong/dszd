@@ -1,0 +1,78 @@
+<view class='mask_big' wx:if="{{showBigImage}}">
+  <view class='time_box'>{{dateTime}}</view>
+  <view class='closeSign' bindtap='closeImage'>×</view>
+  <swiper class='swiper' current='{{current}}' bindchange='changePic' easing-function='linear'>
+
+    <block>
+      <swiper-item>
+        <view></view>
+      </swiper-item>
+      <swiper-item>
+        <image src='{{imgurl}}' lazy-load class='bigimage' mode='widthFix'></image>
+      </swiper-item>
+      <swiper-item>
+        <view></view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='bottom_box'>
+    <view bindtap='great' style='display:inline-block;'>
+      <image src='{{imgUrl}}wanba/img/gamepic/xin.png' class='heart'></image>
+    </view>
+    <view wx:if="{{greatNum>0}}" style="display:inline-block;position:relative;top:-10rpx;left:10rpx;"> {{greatNum}}</view>
+
+    <view bindtap='downLoadPic' class='download'>
+      <image src='{{imgUrl}}wanba/img/gamepic/download.png' class='heart'></image>
+    </view>
+  </view>
+</view>
+<view class="top">
+  <view class="right fr clearfix">
+    <view class="item fl clearfix" style="border-right:1rpx solid #00A0E9;">
+      <view class="img-box">
+        <image src="https://img.wondfun.com//wanba/img/gamepic/photos.png"></image>
+      </view>
+      <text>400</text>
+    </view>
+    <view class="item fl clearfix " style="border-right:1rpx solid #00A0E9;">
+      <view class="img-box">
+        <image src="https://img.wondfun.com//wanba/img/gamepic/photos.png"></image>
+      </view>
+      <text>400</text>
+    </view>
+    <view class="item fl clearfix">
+      <view class="img-box">
+        <image src="https://img.wondfun.com//wanba/img/gamepic/share.png"></image>
+      </view>
+
+      <text>分享</text>
+    </view>
+  </view>
+</view>
+<view class="nav">
+  <!-- <view class="tabs">
+      <view class="tab" wx:for="{{navTab}}" wx:key="{{index}}">{{item}}</view>
+    </view> -->
+
+  <scroll-view scroll-x="true" class="scroll-view-demo">
+    <view class="item {{currentTab==index ? 'active' : ''}}" wx:for="{{teams}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="navbarTap">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  
+</view>
+  <view class="list">
+    <view class='image_box'>
+      <block wx:for="{{list}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="it">
+        <image src="{{it.url}}" class="avatar" lazy-load bindtap="toBigImage" id="{{idx}}"></image>
+      </block>
+    </view>
+  </view>
+
+<view style='position:fixed;bottom:0;left:0;width:100%;height:20rpx;'></view>
+
+
+<button class="btn-b" bindtap="upload" wx:if="{{teamid && act_status==0}}">
+  上传照片
+</button>

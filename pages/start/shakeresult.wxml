@@ -1,0 +1,30 @@
+<!--pages/start/shakeresult.wxml-->
+
+<view class="box">
+<view class="top">
+  <view class="pic-txt">
+   <image src="{{teampic}}" mode="aspectFit" ></image>
+   <view>队伍：{{team}}</view>
+  </view>
+  <view class="pic-txt">
+   <image src="{{genius[gindex].img}}" mode="aspectFit"></image>
+   <view>禀赋：{{genius[gindex].name}}</view>
+  </view>
+</view>
+<view style="display: flex;align-items: center;justify-content: center;">
+  <view class="explain">
+    <view class="t-box" style=" border-bottom: 2rpx dashed #aaa;">
+      <view class="item">队伍：{{team}}</view>
+      <view class="txt">{{desc}}</view>
+    </view>
+    <view class="t-box">
+      <view class="item">禀赋：{{genius[gindex].name}}</view>
+      <view class="txt">{{genius[gindex].info}}</view>
+    </view>
+  </view>
+</view>
+
+  <view class="btn-box"> 
+    <button class="btn" bindtap="next">下一步</button>
+  </view>
+</view>

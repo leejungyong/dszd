@@ -1,0 +1,22 @@
+/* pages/game/heartScore.wxss */
+.history{
+    color: #ededed;
+    font-size: 30rpx;
+    text-align: right;
+    font-family: SourceHanSansSC-regular;
+    width: 90%;
+    margin: 50rpx auto;
+}
+.text{
+  color: rgba(237, 237, 237, 1);
+  font-size: 56rpx;
+  text-align: center;
+  font-family: SourceHanSansSC-regular;
+  margin: 0 auto;
+}
+.score{
+color: var(--yellow);
+font-size: 56rpx;
+text-align: center;
+margin: 20rpx auto;
+}

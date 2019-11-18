@@ -1,0 +1,53 @@
+/* pages/game/borrow.wxss */
+page{
+  background: var(--background-black);
+  /* padding: 100rpx 60rpx; */
+}
+.borrow{
+  padding: 100rpx 0 100rpx 60rpx;
+}
+.text{
+  color: var(--yellow);
+}
+.pl-color{
+  color: var(--input-color)
+}
+.radio-group{
+  margin-top: 20rpx;
+}
+.radio{
+  color: var(--word-color)
+}
+/* .radio:last-child{
+  margin-left: 100rpx;
+} */
+.com{
+  width: 50%;
+  display: inline-block;
+  /* text-align: center; */
+  color: var(--yellow);
+}
+.select-box{
+  color: var(--word-color);
+  animation: myfirst 0.3s;
+  width: 620rpx;
+  border: 1rpx solid rgba(70, 96, 125, 1);
+}
+
+@keyframes myfirst {
+    from {
+        height: 0rpx;
+    }
+ 
+    to {
+        height: 240rpx;
+    }
+}
+.select-item{
+  height: 60rpx;
+  line-height: 60rpx;
+  padding:0 20rpx;
+}
+.select-item:hover{
+  background: var(--blue)
+}

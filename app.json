@@ -1,0 +1,95 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/start/createNew",
+    "pages/start/start",
+    "pages/start/share",
+    "pages/my/myorders",
+    "pages/start/shake",
+    "pages/my/editact",
+    "pages/my/mytests",
+    "pages/my/sharePage",
+    "pages/start/shakeresult",
+    "pages/game/game",
+    "pages/game/team",
+    "pages/game/album",
+    "pages/game/accountant",
+    "pages/game/borrow",
+    "pages/game/lend",
+    "pages/game/scan",
+    "pages/game/map",
+    "pages/game/task",
+    "pages/game/answer",
+    "pages/game/manage",
+    "pages/game/topboard",
+    "pages/game/teamdefine",
+    "pages/game/editteam",
+    "pages/game/viewteam",
+    "pages/game/mycode",
+    "pages/game/werun",
+    "pages/game/roleauthorize",
+    "pages/game/log",
+    "pages/game/auction",
+    "pages/game/xiuxiu",
+    "pages/game/xiuxiu1",
+    "pages/game/xiuxiu2",
+    "pages/game/xiuxiu3",
+    "pages/game/xiuxiu4",
+    "pages/game/challenge",
+    "pages/game/heart1",
+    "pages/game/heartScore",
+    "pages/game/historyrank",
+    "pages/game/gift",
+    "pages/game/toAccount",
+    "pages/game/promoteManager",
+    "pages/game/newTeam",
+    "pages/game/showtradecode",
+    "pages/game/buy",
+    "pages/game/bill",
+    "pages/game/billdetail",
+    "pages/game/codeofborrow",
+    "pages/game/changetime",
+    "pages/game/sellcode",
+    "pages/game/sellstone"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "大商之道",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#121a21",
+    "color": "#946b25",
+    "selectedColor": "#946b25",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "icon/shouye-2.png",
+        "selectedIconPath": "icon/shouye-2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/start/start",
+        "iconPath": "icon/start.png",
+        "selectedIconPath": "icon/start.png",
+        "text": "start"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "icon/wodedangxuan.png",
+        "selectedIconPath": "icon/wodedangxuan.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将仅用于此小程序内"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<!--pages/game/topboard.wxml-->
+<view class="top">
+  <text>排名</text>
+  <text>队伍</text>
+  <text>财富</text>
+</view>
+<view class="list">
+  <view class="team" wx:for="{{list}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="item">
+    <view class="com">
+         <block wx:if="{{item.rank==1}}">
+       <image src="{{imgUrl}}wanba/img/gamepic/no1.png" class="img"></image>
+       </block>
+       <block wx:elif="{{item.rank==2}}">
+       <image src="{{imgUrl}}wanba/img/gamepic/no2.png" class="img"></image>
+       </block>
+       <block wx:else>
+       {{item.rank}} 
+       </block>
+    {{item.id}}
+    </view>
+    <view class="com">{{item.name}}</view>
+    <view class="com">{{item.score}}</view>
+  </view>
+</view>

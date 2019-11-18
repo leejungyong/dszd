@@ -1,0 +1,4 @@
+<!--pages/game/scan.wxml-->
+<view class="btn-box">
+  <button class="scan-btn" bindtap="scan">扫 码</button>
+</view>

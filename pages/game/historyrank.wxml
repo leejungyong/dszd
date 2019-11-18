@@ -1,0 +1,15 @@
+<view class="logo" >
+  <!-- <image src="" class="logo"></image> -->
+</view>
+<view class="myrank">
+<text class="No">1</text>
+    <text class="team">学会玩团队</text>
+    <text class="score">5000</text>
+</view>
+<view class="list" >
+  <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+    <text class="No">1</text>
+    <text class="team">学会玩团队</text>
+    <text class="score">5000</text>
+  </view>
+</view>

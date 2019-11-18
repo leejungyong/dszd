@@ -1,0 +1,34 @@
+<view class="gift">
+  <view class="text">团队禀赋</view>
+  <view class="box">
+  <view class="img-holder" wx:if="{{teamgift.gift1!=0}}">
+    <image style="width: 180rpx;height: 300rpx; "mode="aspectFit"
+ src="https://img.wondfun.com/dszd/img/genius_1.jpg"></image>
+      <view>盐x{{teamgift.gift1}}</view>
+  </view>
+  <view class="img-holder" wx:if="{{teamgift.gift2!=0}}">
+    <image style="width: 180rpx;height: 300rpx; "mode="aspectFit"
+ src="https://img.wondfun.com/dszd/img/genius_2.jpg"></image>
+      <view>粮x{{teamgift.gift2}}</view>
+  </view>
+  <view class="img-holder" wx:if="{{teamgift.gift3!=0}}">
+    <image style="width: 180rpx;height: 300rpx; "mode="aspectFit"
+ src="https://img.wondfun.com/dszd/img/genius_3.jpg"></image>
+      <view>布x{{teamgift.gift3}}</view>
+  </view>
+  <view class="img-holder" wx:if="{{teamgift.gift4!=0}}">
+    <image style="width: 180rpx;height: 300rpx; "mode="aspectFit"
+ src="https://img.wondfun.com/dszd/img/genius_4.jpg"></image>
+      <view>茶x{{teamgift.gift4}}</view>
+  </view>
+  </view>
+</view>
+
+<view class="gift" >
+  <view class="text">个人禀赋</view>
+  <view class="img-holder">
+    <image style="width: 180rpx;height: 300rpx; "mode="aspectFit"
+ src="{{genius[mygift-1].img}}"></image>
+      <view>{{genius[mygift-1].name}}</view>
+  </view>
+</view>

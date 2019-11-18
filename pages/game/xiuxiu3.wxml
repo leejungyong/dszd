@@ -1,0 +1,34 @@
+<!--pages/game/xiuxiu3.wxml-->
+<view class="text">匹配</view>
+<view style="width: 80%;margin: 100rpx auto 0 auto;overflow: hidden;">
+  <view class=" mbox fl clearfix">
+    <view class="act-img">
+    </view>
+    <view class="bf">
+      <image src="{{myGenius.geniusPic}}"></image>
+    </view>
+    <!-- <view class="text">1</view> -->
+  </view>
+  <view class=" mbox fr clearfix ">
+    <view class="act-img">
+    </view>
+    <view class="bf">
+      <image src="{{mateGenius.geniusPic}}"></image>
+    </view>
+  </view>
+</view>
+<block wx:if="{{initState==0}}" >
+<view style="text-align:center;">
+    <button style="margin-top:100rpx;display:inline-block;" class="btn" bindtap="cancel">取消</button>
+  <button style="margin-top:100rpx;display:inline-block;margin-left:20px;" class="btn" bindtap="sure">确定联姻</button>
+</view>
+
+
+</block>
+ <block wx:elif="{{initState==-2}}">
+  <view class="text">联姻失败</view>
+ </block>
+  <block wx:elif="{{initState==2}}">
+  <view class="text">联姻成功</view>
+ </block>
+  

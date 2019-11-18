@@ -1,0 +1,9 @@
+<view class=" box">
+  <view class="act-img">
+
+  </view>
+  <view class="bf"><image></image></view>
+  <view class="text">我的禀赋</view>
+</view>
+
+<view style="margin-top:100rpx;" ><button class="btn" bindtap="toXiuxiu2">开始咻咻</button></view>

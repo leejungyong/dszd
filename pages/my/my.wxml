@@ -1,0 +1,25 @@
+<view class='box'>
+  <view class="top">
+    <view class="left fl">
+      <open-data type="userAvatarUrl" class="avatar"></open-data>
+    </view>
+    <view class="right fl">
+      <view class="name">
+      <open-data type="userNickName" class="name"></open-data>
+      </view>
+      <view class="ID"></view>
+    </view>
+  </view>
+  <view class="list-box">
+    <view class="item" bindtap="toTests">
+      <image src="../../icon/ceping.png" class="fl clearfix"></image>
+      <text class="txt">我的测评</text>
+      <text class="fr clearfix">></text>
+    </view>
+    <view class="item" bindtap="toOrders">
+      <image src="../../icon/wodezhangdan.png" class="fl clearfix"></image>
+      <text class="txt">我的订单</text>
+      <text class="fr clearfix">></text>
+    </view>
+  </view>
+</view>

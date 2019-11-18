@@ -1,0 +1,151 @@
+/* pages/game/album.wxss */
+page{
+  background: #121a21;
+}
+
+.top{
+  text-align: right;
+  height: 108rpx;
+  color: #EDEDED;
+  font-size: 24rpx;
+}
+.top .right{
+  width: 400rpx;
+  height: 60rpx;
+  background: rgba(54, 95, 128, 0.35);
+  border-radius: 20rpx 0 0 20rpx;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  display: flex;
+}
+.top image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.top .right .item{
+  flex: 1;
+  width: 120rpx;
+  height: 40rpx;
+  text-align: center;
+  /* box-sizing: border-box; */
+}
+.top .right .item text{
+  position: relative;
+top: -10rpx;
+}
+.top .img-box{
+  display: inline-block;
+  margin-right: 5rpx;
+}
+.nav{
+  width: 100%;
+  height: 90rpx;
+  background-color: rgba(28, 45, 62, 1);
+  /* padding: 0 40rpx; */
+  /* overflow: scroll; */
+}
+.scroll-view-demo {
+  width: 100%;
+  white-space: nowrap;
+}
+.scroll-view-demo .item{
+  color: #D0A258;
+  width: 120rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  line-height: 90rpx;
+  text-align: center;
+  display: inline-block;
+}
+
+.scroll-view-demo .active{
+  color: #EDEDED;
+  border-bottom: 2rpx solid #EDEDED;
+}
+
+.list{
+  width:720rpx;
+  margin: 20rpx 15rpx 0 15rpx;
+  padding-bottom:20rpx;
+}
+.image_box{
+  display: flex;
+ padding: 0 18rpx 0 26rpx;
+ flex-wrap:wrap;
+}
+.avatar{
+  width:220rpx;
+  height:220rpx;
+  padding:3rpx;
+}
+
+.mask_big{
+position:fixed;
+top:0;
+height:100%;
+background:#121a21;
+width:100%;
+z-index:999;
+color: #00a0e9;
+}
+.swiper{
+  width: 100%;
+  /* height: 1020rpx;
+  padding-bottom: 20rpx; */
+  position:absolute;
+  top:70rpx;
+  left:0;
+  bottom:90rpx;
+  height:auto;
+}
+.closeSign{
+  /* display: inline-block; */
+  color: #00a0e9;
+  float:right;
+  /* margin-right:10px; */
+  font-size:25px;
+  width: 10%;
+}
+.time_box{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 80%;
+  color: #00a0e9;
+  padding-left: 40rpx;
+  display: inline-block;
+}
+.bottom_box{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #00a0e9;
+  position:fixed;
+bottom:0;
+left:0;
+ padding-left: 40rpx;
+ font-size: 40rpx;
+}
+.heart{
+  width: 64rpx;
+  height: 64rpx;
+}
+.bigimage{
+       /* max-height:100%; */
+       position: absolute;
+       left: 0;
+       right: 0;
+       top: 0;
+       bottom: 0;
+       margin: auto;
+       width: 100%;
+}
+.btn-b{
+    position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
+  border-top: 1px solid #121a21;
+  outline: none;
+  color: var(--yellow);
+  background: #1c3043;
+}

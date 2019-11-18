@@ -1,0 +1,36 @@
+/* pages/game/topboard.wxss */
+page{
+  background: var(--background-black);
+}
+.top{
+  width: 100%;
+  height: 110rpx;
+  line-height: 110rpx;
+  background-color:var(--blue) ;
+  color: var(--yellow);
+  display: flex;
+  font-size: 36rpx;
+}
+.top text{
+  flex: 1;
+  display: inline-block;
+  text-align: center;
+}
+
+.list .team{
+  color: var(--word-color);
+  display: flex;
+  margin-top: 30rpx;
+  background-color:var(--blue) ;
+}
+.list .team .com{
+  flex: 1;
+  text-align: center;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 34rpx;
+}
+.img{
+  width:16px;
+  height:16px;
+}

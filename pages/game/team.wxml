@@ -1,0 +1,28 @@
+
+  <view class="logo">
+    <image src="{{imgurl}}dszd/img/szj_logo.png"></image>
+    </view>
+  <view class="btns"> 
+    <view class="item" bindtap="viewTeam">
+      <image src="{{imgurl}}dszd/img/viewteam.png"></image>
+    </view>
+    <view class="item">
+      <image src="{{imgurl}}dszd/img/compass.png"></image>
+    </view>
+    <view class="item">
+      <image src="{{imgurl}}dszd/img/mycode.png" bindtap="qrcode"></image>
+    </view>
+    <view class="item" wx:if="{{isCaptain}}">
+      <image src="{{imgurl}}dszd/img/role.png" bindtap="roleauthorize"></image>
+    </view>
+    <view class="item">
+      <image src="{{imgurl}}dszd/img/mygenius.png" bindtap="gift"></image>
+    </view>
+    <view class="item">
+      <image src="{{imgurl}}dszd/img/mywerun.png" bindtap="werun"></image>
+    </view>
+     <view class="item">
+      <image src="{{imgurl}}dszd/img/album.png" bindtap="album"></image>
+    </view>
+  </view>
+

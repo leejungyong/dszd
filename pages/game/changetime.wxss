@@ -1,0 +1,5 @@
+/* pages/game/changetime.wxss */
+.box{
+  padding: 30rpx;
+  color: var(--yellow);
+}

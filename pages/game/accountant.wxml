@@ -1,0 +1,38 @@
+<!--pages/game/accountant.wxml-->
+<view class="">
+  <view class="rest">
+    <text class="item" style="text-align:left; padding-left:60rpx;color:#D0A258;">余额 {{money}}</text>
+    <text class="item" style="text-align:right;padding-right:60rpx;" bindtap="toBill"></text>
+  </view>
+  <view class="money">
+    <text class="item" style="text-align:left; padding-left:60rpx;">借入 {{borrow}}</text>
+    <text class="item" style="text-align:right;padding-right:60rpx;" bindtap="toBill">贷出 {{lend}}</text>
+  </view>
+</view>
+
+<!-- <view class="poi-box">
+      <view class="poi" wx:for="{{poilist}}" wx:key="{{index}}">{{index+1}}</view>
+    </view> -->
+<view>
+  <view class="nav">
+    <scroll-view scroll-x="true" class="scroll-view-demo">
+      <view class="item {{currentTab==index ? 'active' : ''}}" wx:for="{{tabs}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="navbarTap">
+        {{item}}
+      </view>
+    </scroll-view>
+  </view>
+  <view class="list">
+    <view wx:for="{{list}}" wx:key="{{key}}" class="record">
+      <text class="date fl">{{item.date}}</text>
+      <text class="event fl">{{item.event}}</text>
+      <text class="detail fl" bindtap="toBillDetail">
+    <text wx:if="{{currentTab==1||currentTab==2}}"> 详情>></text>
+      </text>
+    </view>
+  </view>
+</view>
+
+<view class="bottom">
+  <view class="com" bindtap="borrow">借入</view>
+  <view class="com" bindtap="lend">贷出</view>
+</view>

@@ -1,0 +1,42 @@
+/* pages/game/historyrank.wxss */
+.logo{
+  width: 470rpx;
+  height: 218rpx;
+  margin: 0 auto;
+}
+.myrank{
+  color: var(--yellow);
+  width: 670rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 10rpx ;
+  text-align: center;
+  border: 1rpx solid var(--yellow);
+  margin:25rpx auto 0 auto;
+}
+.list{
+  color: #ededed;
+  height: 800rpx;
+  overflow-y: scroll;
+}
+.list .item{
+  width: 670rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 10rpx ;
+  text-align: center;
+  border: 1rpx solid var(--yellow);
+  margin:25rpx auto 0 auto;
+}
+.No{
+  display: inline-block;
+  width: 20%;
+}
+.team{
+  display: inline-block;
+  width: 40%;
+}
+.score{
+display: inline-block;
+  width: 40%;
+}

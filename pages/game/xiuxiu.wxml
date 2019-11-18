@@ -1,0 +1,19 @@
+<!-- <view class=" box">
+  <view class="act-img">
+
+  </view>
+  <view class="bf">
+    <image></image>
+  </view>
+  <view class="text">我的禀赋</view>
+</view>
+
+<view style="margin-top:100rpx;">
+  <button class="btn" bindlongpress="search" bindtouchstart="touchstart" bindtouchend="touchend">开始咻咻</button>
+</view> -->
+<view class="holder" hidden="{{hide}}">
+  <view class="dot" bindtouchstart="touchstart" bindtouchend="touchend" bindlongtap="search"></view>
+  <view class="pulse {{end?'pause':''}} {{start?'play':''}}"></view>
+  <view class="pulse1 {{end?'pause':''}}{{start?'play1':''}}"></view>
+</view>
+<audio src="{{audio1}}" id="myAudio"></audio>

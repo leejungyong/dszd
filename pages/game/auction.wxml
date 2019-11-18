@@ -1,0 +1,42 @@
+<view class="poi-box">
+  <view class="poi" wx:for="{{poilist}}" wx:key="{{index}}" id="{{index}}">
+    <block wx:if="{{item.owner.length>0}}">
+      <view class="teams" wx:for="{{item.owner}}" wx:for-item="it" wx:key="{{it}}" style="background:{{it.color}}">
+      </view>
+    </block>
+    {{item.displayorder}}
+  </view>
+</view>
+<view class="info">
+<text class="i">拍卖在{{auctionBegin}}开始</text>
+<text class="i">在{{auctionEnd}}结束</text>
+
+<text class="i" wx:if="{{auctionPass>0}}">已进行{{auctionPass}}</text>
+
+<text class="i" wx:if="{{auctionPass>0}}">  {{countdown}}秒无人出价将自动流拍</text>
+  <text class="i">拍卖地块：{{taskid}}号</text>
+ <!--  <text class="i">  倒计时：{{countdown}}''</text> -->
+</view>
+<!-- <textarea  placeholder="" class="showrecord" disabled value="{{content}}" /> -->
+<scroll-view scroll-y="true" class="scroll-view-demo" scroll-into-view="{{toView}}">
+  <view wx:for="{{content}}" wx:key="{{index}}"  class="item">
+  <view wx:if="{{item.teamname!=myteam.name}}" id="m{{index}}" class="fl">
+  <text>{{item.date}} </text>
+ 
+    <text>{{item.teamname}}({{item.nick}})  </text>
+    <text>{{item.msg}}</text>
+   
+  </view>
+  <view wx:else id="m{{index}}" id="m{{index}}" class="fr" style="color:green;">
+  <text>{{item.date}} </text>
+    <text>{{item.teamname}}({{item.nick}}) </text>
+    <text>{{item.msg}}</text>
+  </view>
+  </view>
+
+</scroll-view>
+
+<view class="bottom" wx:if="{{auctionPass>0 && auctionPass<120}}">
+  <input class="input-m fl clearfix" type="number" placeholder="输入拍卖价格" value="{{msg}}" bindinput="updateMsg" />
+  <button class="send fl clearfix" bindtap="sendMsg">发送</button>
+</view>

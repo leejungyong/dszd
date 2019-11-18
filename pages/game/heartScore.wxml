@@ -1,0 +1,4 @@
+<view class="history" bindtap="toRank"> 历史排行>>></view>
+<view class="text">挑战成绩</view>
+<view class="score">5000</view>
+<view></view>

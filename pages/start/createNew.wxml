@@ -1,0 +1,53 @@
+<view class="box">
+  <!-- <view class="fr clearfix">
+  <view style="display:inline-block;" class="u-tri"></view>
+  <view style="display:inline-block;" class="pop">提示</view>
+    </view> -->
+  <view style="margin-top:40rpx;">
+    <view class="text star">活动名称</view>
+    <input class="input" type="text" placeholder="输入活动名称" placeholder-style="color:#46607D;" bindinput="updateName" />
+  </view>
+
+  <view style="margin-top:15rpx;">
+    <view class="text">活动时间</view>
+    <picker class="" mode="date" range="[]" range-key="" value="{{date}}" bindchange="bindDateChange" bindcancel="">
+      <!-- <input class="input" type="text" placeholder="请选择日期" placeholder-style="color:#46607D;"/> -->
+      <view class="input" style="color:{{date==''?'#46607D':'#aaa'}};">{{date==''?'请选择日期':date}}</view>
+    </picker>
+  </view>
+
+  <view style="margin-top:15rpx;">
+    <view class="text">团队</view>
+    <input class="input" type="text" placeholder="团队名称" placeholder-style="color:#46607D;" bindinput="updateTeamName" />
+  </view>
+
+  <view style="margin-top:15rpx;">
+    <view class="text">地区</view>
+    <input class="input" type="text" placeholder="选择地区" placeholder-style="color:#46607D;" bindinput="updatePlace" />
+  </view>
+  <view style="margin-top:15rpx;">
+    <view class="text star">队伍数量</view>
+    <view class="body-view">
+      <slider bindchange="sliderChange" max="6" show-value backgroundColor="#46607D" activeColor="#00A0E9" block-color="#00A0E9" block-size="20" value="{{teamNum}}" />
+    </view>
+  </view>
+
+  <view style="margin-top:15rpx;">
+    <view class="text">分组自定义>></view>
+  </view>
+  <view style="margin-top:20rpx;">
+    <view class="text">活动封面图</view>
+    <text class="tips">默认大商之道官方画面，如需修改请自行上传jpg格式片，最佳尺寸：长500px宽400px</text>
+    <block wx:if="{{pic}}">
+      <view class="fl clearfix" style="margin-top:20rpx;margin-right:20rpx;">
+        <image src="{{pic}}" style='width:50px;height:40px;' bindtap="preview"></image>
+        <view bindtap="delPic" class="del-pic">删除</view>
+      </view>
+    </block>
+    <view class="add-pic fl clearfix" bindtap="chooseImg">+
+    </view>
+  </view>
+
+  <view style="text-align:center; margin-top:240rpx;"> <button class="btn" bindtap="creatAct">一键生成</button></view>
+
+</view>

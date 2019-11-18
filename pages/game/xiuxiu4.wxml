@@ -1,0 +1,8 @@
+<view class="success">联姻成功</view>
+<view class="box">
+  <view class="act-img"></view>
+  <view class="bf-img"></view>
+  <view class="bf-img"></view>
+  <view style="height:30rpx;"></view>
+</view>
+<view class="detail">盐0.5+粮0.5</view>

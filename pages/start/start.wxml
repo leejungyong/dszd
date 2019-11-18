@@ -1,0 +1,48 @@
+
+  <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorcolor}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" bindchange="change" circular="{{circular}}">
+      <block wx:for="{{swiper}}" wx:key="{{index}}">
+        <swiper-item bindtap="toWX" id="{{index}}">
+          <image src="../../icon/导图.jpg" data-id="{{index}}" class="slide-image" mode="aspectFill" bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="btn-box">
+    <view class="img-holder" bindtap="toShake">
+      <view class="img1">
+      </view>
+    </view>
+    <view class="img-holder" >
+      <block wx:if="{{!getuserinfo}}">
+        <button open-type="getUserInfo" class="img2" bindgetuserinfo="bindGetUserInfo"  ></button>
+      </block>
+      <block wx:else>
+        <button class="img2" bindtap="toCreate" ></button>
+      </block>
+
+    </view>
+  </view>
+<view class="content">
+  学会玩顺应中国消费升级大趋势，为企业团队提供
+了融合拓展（学）+会务（会）+旅游（玩）于一体
+的新型团建服务。学会玩以“让世界更好玩”为使命，
+跨界整合拓展、综艺、游戏、动漫、电影、户外、
+旅行等行业资源，形成了独具学会玩特色的好玩的
+团建产品，并在实践中提出了“团建4.0“的概念，
+引领整个团建行业向数字化时代转型升级。 目前，
+学会玩已经形成了以玩商学院《无人区》为代表的
+高端团建产品，以运动学院《超级棒球》为代表的
+运动团建产品，以及以互联网+团建的《奔跑吧大
+富翁》为代表的团建4.0产品，为全球领先的互联
+网公司如阿里巴巴、美团点评等公司提供了长期服
+务，并致力于成为“中国互联网前100强公司的首选
+团建品牌”，用“数据化团建”帮助客户打造卓越团队，
+提升组织效能。
+</view>
+
+<!-- <view>
+<button>试玩模式</button>
+<button bindtap="toCreate">创建模式</button>
+</view> -->

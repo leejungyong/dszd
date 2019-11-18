@@ -1,0 +1,59 @@
+<view class="home">
+  <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorcolor}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" bindchange="change" circular="{{circular}}">
+      <block wx:for="{{swiper}}" wx:key="{{index}}">
+        <swiper-item bindtap="toWX" id="{{index}}">
+          <image src="https://img.wondfun.com/wanba/img/swiper.jpg" data-id="{{index}}" class="slide-image" mode="aspectFill" bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="changeNav">{{item}}</text>
+    <text class="search" bindtap='showSide'>搜索</text>
+  </view>
+  <view class="list" hidden="{{currentTab!=0}}">
+    <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+    </view>
+  </view>
+  <view class="" hidden="{{currentTab!=1}}">
+
+  </view>
+  <view style='display:{{display}}; font-size:32rpx;'>
+    <view class='bg' style='display:{{display}}' bindtap='hideSide'></view>
+    <view class="side" style='display:{{display}};translate:{{translate}}'>
+      <view class='filterbox'>
+        <view>城市
+        </view>
+        <view style='padding-left:32rpx;margin-top:20rpx;'>
+          <view wx:for="{{cityList}}" wx:key="{{index}}" class="minicard {{item.checked?'choose':''}} " data-idx='{{index}}' bindtap='chooseCity'>
+            {{item.name}}
+          </view>
+        </view>
+
+      </view>
+
+      <view class='filterbox'>
+        <view>类别</view>
+        <view style='padding-left:32rpx;margin-top:10rpx;'>
+          <view wx:for="{{typeList}}" wx:key="{{index}}" class="minicard {{item.checked? 'choose':''}}" data-idx='{{index}}' bindtap='chooseType'>
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+
+      <view style='margin-top:20rpx;padding-left:20rpx'>
+        <view>关键词</view>
+        <view style='padding-left:32rpx;margin-top:20rpx;'>
+          <input class='keySearch' placeholder='请输入关键字' placeholder-style='color:#3a6996' bindinput='changeKeyWord' value='{{keyword}}'></input>
+        </view>
+        <button class='f_button' bindtap='resetButton'>重置</button>
+        <button class='f_button' bindtap='sureButton'>确定</button>
+      </view>
+
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,25 @@
+/* pages/game/xiuxiu1.wxss */
+page{
+  background: #1C3043;
+}
+.box{
+  width: 300rpx;
+  /* height: 660rpx; */
+  border-radius: 10rpx;
+  background-color: rgba(28, 48, 67, 1);
+  text-align: center;
+  border: 1rpx solid var(--yellow);
+  margin: 200rpx auto 0 auto;
+  color: var(--yellow);
+}
+.box .act-img{
+  height: 120rpx;
+}
+.box .bf image{
+  width: 300rpx;
+  height: 490rpx;
+}
+.box .text{
+  height: 60rpx;
+}
+

@@ -1,0 +1,30 @@
+/* pages/game/gift.wxss */
+page{
+  /* padding: 40rpx; */
+   color: var(--yellow);
+   padding-bottom: 20rpx;
+}
+.text{
+  height: 100rpx;
+  line-height: 100rpx;
+ 
+  font-size: 30rpx;
+}
+.gift{
+  width: 90%;
+  margin: 0 auto;
+}
+.box{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.img-holder{
+  width: 50%;
+  text-align: center;
+  margin-bottom: 10rpx;
+  color: var(--word-color);
+}
+.img-box{
+
+}

@@ -1,0 +1,18 @@
+<view class="box" >
+  <view class="text star">队伍名称</view>
+  <input class="input" placeholder="填写队伍名称4个字" placeholder-class="pl" bindinput='changeType' maxlength="4"></input>
+  <view class="text star"> 队伍介绍</view>
+  <textarea class="textarea" placeholder="介绍文字150以内" bindinput="changeMemo" maxlength="150"></textarea>
+  <view class="text star"> 队伍颜色</view>
+   <view class='color-box' style='background:{{color}}' bindtap='showPicker'></view>
+   <color-picker class="color-picker" colorData="{{colorData}}" rpxRatio="{{rpxRatio}}" bindchangecolor="onChangeColor" wx:if='{{showColorPicker}}' data-idx='picker'></color-picker>
+  <view class="text star"> 队伍图片</view>
+    <view style='float:left;  margin:20rpx 20rpx 20rpx 0;' wx:if="{{img!=''}}">
+    <image src='{{img}}' mode='widthFix' style='width:160rpx;height:200rpx;'></image>
+  </view>
+  <view class='add-pic' bindtap='uploadPic'>
+    +
+  </view>
+</view>
+<view style="clear:both;"></view>
+<view style="margin-top:50rpx;"><button class="btn" bindtap="sureAdd">确认添加</button> </view>

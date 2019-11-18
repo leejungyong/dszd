@@ -1,0 +1,7 @@
+<!--pages/start/share.wxml-->
+<!-- <text>pages/start/share.wxml</text> -->
+<view class="qrcode" >
+<image src="{{img}}" style="width:250px;"></image>
+<button class="green-btn" open-type='share'>邀请好友参加活动</button>
+<button class="green-btn" bindtap="myact">我的活动</button>
+</view>

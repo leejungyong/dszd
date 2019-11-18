@@ -1,0 +1,25 @@
+.nav{
+  width: 100%;
+  height: 90rpx;
+  background-color: rgba(28, 45, 62, 1);
+  /* padding: 0 40rpx; */
+  /* overflow: scroll; */
+}
+.scroll-view-demo {
+  width: 100%;
+  white-space: nowrap;
+}
+.scroll-view-demo .item{
+  color: var(--yellow);
+  width: 120rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  line-height: 90rpx;
+  text-align: center;
+  display: inline-block;
+}
+
+.scroll-view-demo .active{
+  color: #EDEDED;
+  border-bottom: 2rpx solid #EDEDED;
+}

@@ -1,0 +1,71 @@
+/* pages/game/manage.wxss */
+page{
+  background: var(--background-black);
+}
+.table {
+  /* margin-top: 5%; */
+  width: 95%;
+  /* padding: 0 25rpx 0 25rpx; */
+  text-align: center; 
+  margin: 40rpx auto 0 auto; 
+}
+
+
+.table .point {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+}
+
+.table .point .poi {
+  width: 90rpx;
+  height: 90rpx;
+  /* float: left; */
+  margin: 1rpx;
+  font-size: 24rpx;
+  /* background: #ff0; */
+  text-align: center;
+  border: 1rpx solid #00a0e8;
+  color: #fff;
+}
+.poi-box {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20rpx auto 0 auto;
+}
+
+.poi-box .poi {
+  width: 90rpx;
+  height: 90rpx;
+  text-align: center;
+  border: 1rpx solid var(--blue-s);
+  color: var(--blue-s);
+  margin: 0 4rpx 4rpx 0;
+}
+.btns-box{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20rpx auto 0 auto;
+}
+.btns-box .mbtn{
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #D0A258;
+  background: #1c3043;
+  text-align: center;
+  background-color: rgba(28, 48, 67, 1);
+  border: 2rpx solid #D0A258;
+  font-size: 28rpx;
+  margin-top: 36rpx;
+}
+button[disabled]{
+  background: #797a7a!important;
+  color:#121A21!important;
+  border: 1rpx solid #1c3043!important;
+}

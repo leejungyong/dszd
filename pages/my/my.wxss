@@ -1,0 +1,46 @@
+/* pages/my/my.wxss */
+page{
+  background: #0C1319;
+  color: #D0A258;
+}
+.box{}
+.box .top{
+  width: 100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  padding: 20rpx 60rpx;
+  box-sizing: border-box;
+  background: #121A21;
+}
+.box .top .left{
+  height: 90rpx;
+  width: 90rpx;
+}
+.box .top .right{
+  margin-left: 20rpx;
+  width: 320rpx;
+  overflow: hidden;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.box .top .right .name{
+  font-size: 36rpx;
+}
+
+.list-box{
+  font-size: 30rpx;
+}
+
+.list-box .item{
+  padding:  20rpx 80rpx;
+  margin-top: 20rpx;
+  background: #121A21;
+}
+.item image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.item .txt{
+display: inline-block;
+margin-left: 20rpx;
+}

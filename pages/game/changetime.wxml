@@ -1,0 +1,5 @@
+<view class="box">
+<view>调整时间</view>
+  <slider  bindchange="sliderChange" min='{{min}}' max='60' block-size="22" show-value></slider>
+  <view><button class="btn" bindtap="sure">确认调整</button> </view>
+</view>

@@ -1,0 +1,34 @@
+
+  <view class="borrow">
+    <view class="text" wx:if="{{type==0}}">
+      贷款方:{{teamname}}
+    </view>
+    <view class="text" wx:else>
+      借入方:{{teamname}}
+    </view>
+    <view style="margin-top:20rpx;">
+      <view class="text star">
+        借入金额
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" disabled="true" value="{{money}}"></input>
+    </view>
+    <view style="margin-top:20rpx;">
+      <view class="text star">
+        利率%
+      </view>
+      <input class="input" placeholder="" placeholder-class="pl-color" disabled="true" value="{{rate}}"></input>
+    </view>
+
+    <view style="margin-top:50rpx;">
+      <view class="text star">
+        还款时间
+      </view>
+      <view class="input" bindtap="showSelect">
+        {{deadline}}
+      </view>
+    </view>
+    <view style="margin-top:50rpx;">
+      <view class="com">总利息:{{interest}}</view>
+      <view class="com">总还款金额:{{total}}</view>
+    </view>
+  </view>

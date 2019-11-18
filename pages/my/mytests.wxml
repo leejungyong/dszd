@@ -1,0 +1,59 @@
+  <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorcolor}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" bindchange="change" circular="{{circular}}">
+      <block wx:for="{{swiper}}" wx:key="{{index}}">
+        <swiper-item bindtap="toWX" id="{{index}}">
+          <image src="../../icon/导图.jpg" data-id="{{index}}" class="slide-image" mode="aspectFill" bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+   <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="changeNav">{{item}}</text>
+  </view>
+
+<block wx:if="{{currentTab==0}}" >
+<view class="list-box">
+    <view wx:for="{{actNow}}" class="card" wx:key="{{index}}">
+      <view class="cover fl clearfix">
+      <image src="{{imgurl}}dszd/api/sharepic/{{item.sharepic}}"></image>
+      </view>
+      <view class="right fl clearfix">
+        <view class="name ">{{item.title}}</view>
+        <view style="height: 60rpx;line-height: 60rpx;">
+        <view class="date ">{{item.date}}</view>
+        <view class="fr clearfix apply">
+          <text bindtap="editAct" id="{{index}}" >编辑</text>
+          <text bindtap="useAct" id="{{index}}">使用</text>
+          <text bindtap="deleteAct" id="{{index}}">删除</text>
+        </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else >
+<view class="list-box">
+    <view wx:for="{{actFinish}}" class="card" wx:key="{{index}}">
+      <view class="cover fl clearfix">
+      <image src="../../icon/导图.jpg"></image>
+      </view>
+      <view class="right fl clearfix">
+        <view class="name ">乌镇风云</view>
+        <view style="height: 60rpx;line-height: 60rpx;">
+        <view class="date ">2019.3.2</view>
+        <view class="fr clearfix point">
+          <text>思南指数</text>
+        </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+</block>
+  <block wx:if="{{!getuserinfo}}">
+        <button open-type="getUserInfo" class="creat" bindgetuserinfo="bindGetUserInfo" >创建测评</button>
+      </block>
+      <block wx:else>
+        <button class="creat" bindtap="createTest" >创建测评</button>
+      </block>

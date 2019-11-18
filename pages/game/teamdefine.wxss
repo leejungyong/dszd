@@ -1,0 +1,33 @@
+
+
+.box{
+  text-align:center;
+  color: var(--yellow);
+  width: 90%;
+  margin: 30rpx auto;
+}
+.box .img-holder{
+  /* display: inline-block; */
+  width: 33.3%;
+  text-align: center;
+  margin-top: 25rpx;
+  float: left;
+}
+.box .img-holder image{
+  width: 168rpx;
+  height: 244rpx;
+}
+.add{
+  width: 170rpx;
+  height: 250rpx;
+  background-color: rgba(28, 48, 67, 1);
+  border: 2rpx solid var(--yellow);
+  color:  var(--yellow) ;
+  line-height: 250rpx;
+  text-align: center;
+  font-size: 70rpx;
+  border-radius: 10rpx;
+  margin-left: 30rpx;
+  margin-top: 25rpx;
+  float: left;
+}

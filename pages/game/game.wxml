@@ -1,0 +1,1244 @@
+<!--pages/game/game.wxml-->
+<view class="game">
+  <view class="main">
+    <view class="top">
+      <view class="item">{{myteam.name}}</view>
+      <view class="item logo"></view>
+      <view class="item">财富:{{myteam.money==null?0:myteam.money}}</view>
+    </view>
+    <block wx:if="{{step==-1||step==-2||act.status==-1}}">
+      <view class="advan">
+        <view class="time fl ">
+        </view>
+        <view class="notice fl ">
+          <block wx:if='{{act.status==-1}}'>
+            <view class="peroid">游戏暂停中</view>
+          </block>
+          <block wx:else>
+            <view class="peroid">{{step==-1?'尚未开始':'已经结束'}}</view>
+          </block>
+        </view>
+        <view class="time fr"></view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="advan">
+        <view class="time fl ">
+          <view style="margin-top:10px;">阶段倒计时</view>
+          <view>{{countTime}}</view>
+        </view>
+        <view class="notice fl ">
+          <view class="peroid">{{boardInfo.title}}</view>
+          <view class="info">
+            <swiper style="height:70rpx;" autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" duration="{{duration}}" circular="true">
+              <block wx:for="{{boardInfo.msg}}" wx:key="*this">
+                <swiper-item>
+                  <view>{{item}}</view>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </view>
+        <view class="time fr">
+          <view style="margin-top:10px;">全场结束时间</view>
+          <view>{{endtime}}</view>
+        </view>
+      </view>
+    </block>
+    <!-- <view class="advan">
+      <view class="time fl ">
+        <view style="margin-top:10px;">阶段倒计时</view>
+        <view>{{countTime}}</view>
+      </view>
+      <view class="notice fl ">
+        <view class="peroid">{{boardInfo.title}}</view>
+        <view class="info">
+           <swiper style="height:70rpx;" autoplay="{{autoplay}}" interval="{{interval}}"vertical="true" duration="{{duration}}" circular="true">
+        <block wx:for="{{boardInfo.msg}}" wx:key="*this" >
+          <swiper-item>
+            <view>{{item}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+        </view>
+      </view>
+      <view class="time fr">
+        <view style="margin-top:10px;">全场结束时间</view>
+        <view>{{endtime}}</view>
+      </view>
+    </view> -->
+
+    <view class="menu">
+      <view class="menu-item fl clearfix" bindtap="toTeam">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/xunluoduiwu.png"></image>
+        <text class="btn-txt">队伍</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="ai" wx:if="{{step==0||step==4||step==8||step==12}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/yanjing.png"></image>
+        <text class="btn-txt">寻宝</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="toAlbum" wx:if="{{step==0||step==4||step==8||step==12}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/tuqian.png"></image>
+        <text class="btn-txt">图钱</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="showBox" wx:if="{{myteam.currentrole==0&&step>=0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/shoutibao.png"></image>
+        <text class="btn-txt">背包</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="log" wx:if="{{myteam.currentrole==0&&step>=0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/log.png"></image>
+        <text class="btn-txt">记录</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="toAccountTant" wx:if="{{myteam.currentrole==3&&step>=0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/account.png"></image>
+        <text class="btn-txt">账房</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="link" wx:if="{{step>=0&&myteam.currentrole==0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/link.png"></image>
+        <text class="btn-txt">连连</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="toHeart" wx:if="{{step==0||step==4||step==8||step==12}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/heart.png"></image>
+        <text class="btn-txt">心流</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="auction" wx:if="{{step==1||step==5||step==9||step==13}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/auction.png"></image>
+        <text class="btn-txt">拍卖</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="toXiuxiu1" wx:if="{{step>=0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/xiuxiu.png"></image>
+        <text class="btn-txt">咻咻</text>
+      </view>
+      <view class="menu-item fl clearfix" bindtap="buy" wx:if="{{step>=0&&myteam.currentrole==0}}">
+        <image class="" mode="aspectFit" src="{{cdn}}dszd/img/buy.png"></image>
+        <text class="btn-txt">购买</text>
+      </view>
+    </view>
+
+    <!-- <view class="poi-box">
+      <view class="poi" wx:for="{{poilist}}" wx:key="{{index}}" bindtap="toMap" id="{{index}}">{{item.displayorder}}</view>
+    </view> -->
+    <view class="poi-box">
+
+      <block wx:for="{{poilist}}" wx:for-index="index" wx:key="index" wx:for-item="item" class="poi">
+        <!-- 游戏阶段 -->
+        <!-- <block wx:if="{{act.status<=0}}"> -->
+        <!-- 如拥有灵魂宝石上帝视角 -->
+        <block wx:if="{{myteam.currentrole==0 && godview}}">
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi blue" bindtap="map" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              G </view>
+          </block>
+          <block wx:elif="{{item.ptype==3}}">
+            <!-- 有占领 -->
+            <block wx:if="{{item.owner.length>0}}">
+              <!-- 独占 -->
+              <block wx:if="{{item.owner.length==1}}">
+
+
+                <block wx:if="{{item.isSold==0}}">
+                  <view class="poi" bindtap="map" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}
+                    <text>{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.isSold>0}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+
+                    {{item.displayorder}}
+                    <text>{{item.plant}}</text>
+                  </view>
+                </block>
+
+
+              </block>
+              <!-- 多人占领 -->
+              <block wx:else>
+                <view class="poi" bindtap="map" id="{{index}}" style="border: 1rpx solid #fff;">
+                  <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                    <span style="background:{{teams[it-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+
+                  </block>
+                  {{item.displayorder}}
+                  <text>{{item.plant}}</text>
+                </view>
+              </block>
+            </block>
+
+            <block wx:else>
+              <view class="poi" bindtap="map" id="{{index}}" style="border: 1rpx solid #fff;">
+                {{item.displayorder}}
+                <text>{{item.plant}}</text>
+              </view>
+            </block>
+          </block>
+          <block wx:else>
+            <block wx:if="{{item.owner.length>0}}">
+              <block wx:if="{{item.owner.length==1}}">
+                <view class="poi blue" bindtap="map" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  {{item.displayorder}}
+                  <text>{{item.plant}}</text>
+                </view>
+              </block>
+              <!-- 是拍卖点 -->
+              <block wx:else>
+                <view class="poi blue" bindtap="map" id="{{index}}">
+                  <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                    <span style="background:{{teams[it-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+
+                  </block>
+                  {{item.displayorder}}
+                  <text>{{item.plant}}</text>
+                </view>
+              </block>
+            </block>
+
+            <block wx:else>
+              <view class="poi blue" bindtap="map" id="{{index}}">
+                {{item.displayorder}}
+                <text>{{item.plant}}</text>
+              </view>
+            </block>
+          </block>
+        </block>
+        <!-- 否则，普通模式 -->
+        <block wx:else>
+          <block wx:if="{{(item.owner[0]==myteam.currentteamid || filter.owner(item.owner,myteam.currentteamid)>-1) && (myteam.currentrole==0 || act.canlook==1) }}">
+            <block wx:if="{{item.ptype==1}}">
+              <view class="poi green" bindtap="map" id="{{index}}" style="background:{{myteam.color}}">
+                <view class="center">
+                  <text class="txt"> {{item.displayorder}}<text>{{item.plant}}</text></text>
+                </view>
+              </view>
+            </block>
+            <block wx:elif="{{item.ptype==3}}">
+              <view class="poi" bindtap="map" id="{{index}}" style="border: 1rpx solid #fff;background:{{myteam.color}}">
+                <view class="center">
+                  <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                </view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="poi blue" bindtap="map" id="{{index}}" style="background:{{myteam.color}}">
+                <view class="center">
+                  <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                </view>
+              </view>
+            </block>
+          </block>
+
+          <block wx:else>
+
+            <block wx:if="{{item.ptype==2}}">
+              <block wx:if="{{item.owner[0]==myteam.currentteamid &&  (myteam.roleid==0 || act.canlook==1)}}">
+                <view class="poi oranger" bindtap="map" id="{{index}}" style="background:{{myteam.color}}">
+                  <view class="center">
+                    <text class="txt"> G</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi oranger" bindtap="map" id="{{index}}">
+                  <view class="center">
+                    <text class="txt"> G</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" bindtap="map" id="{{index}}">
+                  <view class="center">
+                    <text class="txt">{{item.displayorder}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" bindtap="map" id="{{index}}" style="border: 1rpx solid #fff;">
+                  <view class="center">
+                    <text class="txt">{{item.displayorder}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==0}}">
+                <view class="poi blue" bindtap="map" id="{{index}}">
+                  <view class="center">
+                    <text class="txt">{{item.displayorder}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+
+          </block>
+        </block>
+        <!-- </block> -->
+        <!-- 游戏结束 -->
+        <!-- <block wx:if="{{act.status==1}}">
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi oranger" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              <view class="center">
+                <text class="txt">G</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+
+            <block wx:if="{{item.owner.length>0}}">
+
+              <block wx:if="{{item.owner.length==1}}">
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+
+                </block>
+                <block wx:else>
+                  <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+
+              <block wx:else>
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:else>
+
+                  <view class="poi blue" id="{{index}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+          </block>
+        </block> -->
+        <!-- 交易开始 -->
+        <!-- <block wx:elif="{{act.status==2}}">
+
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi oranger" bindtap="deal" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              <view class="center">
+                <text class="txt">G</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+
+            <block wx:if="{{item.owner.length>0}}">
+
+              <block wx:if="{{item.owner.length==1}}">
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="poi blue" bindtap="deal" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+
+              <block wx:else>
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:else>
+
+                  <view class="poi blue" bindtap="deal" id="{{index}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" id="{{index}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+          </block>
+        </block> -->
+        <!-- 交易结束 -->
+        <!-- <block wx:elif="{{act.status==3}}">
+
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi oranger" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              <view class="center">
+                <text class="txt">G</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+
+            <block wx:if="{{item.owner.length>0}}">
+
+              <block wx:if="{{item.owner.length==1}}">
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+
+              <block wx:else>
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:else>
+
+                  <view class="poi blue" id="{{index}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+          </block>
+        </block> -->
+        <!--    拍卖开始 -->
+        <!-- <block wx:elif="{{act.status==4}}">
+
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi oranger" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              <view class="center">
+                <text class="txt">G</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+
+            <block wx:if="{{item.owner.length>0}}">
+
+              <block wx:if="{{item.owner.length==1}}">
+                <block wx:if="{{item.ptype==1 && item.isSold==0}}">
+                  <view class="poi green" bindtap="auction" id="{{index}}">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==1 && item.isSold>0}}">
+                  <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+
+              <block wx:else>
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" bindtap="auction" id="{{index}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" bindtap="auction" id="{{index}}" style="border: 1rpx solid #fff;}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:else>
+
+                  <view class="poi blue" id="{{index}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+          </block>
+        </block> -->
+        <!-- 全场结束 -->
+        <!-- <block wx:elif="{{act.status>=5}}">
+
+          <block wx:if="{{item.ptype==2}}">
+            <view class="poi oranger" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+              <view class="center">
+                <text class="txt">G</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+
+            <block wx:if="{{item.owner.length>0}}">
+
+              <block wx:if="{{item.owner.length==1}}">
+                <block wx:if="{{item.ptype==1 && item.isSold==0}}">
+                  <view class="poi green" id="{{index}}">
+                    <span style="background:{{teams[item.owner-1].color}};width:10px;height:10px;float:left;margin-right:2px">
+                    </span>
+                    {{item.displayorder}}{{item.plant}}
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==1 && item.isSold>0}}">
+                  <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+
+              <block wx:else>
+                <block wx:if="{{item.ptype==1}}">
+                  <view class="poi green" id="{{index}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:elif="{{item.ptype==3}}">
+                  <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;}}">
+                    <block wx:for="{{item.owner}}" wx:for-index="idx" wx:key="idx" wx:for-item="it">
+
+                      <span style="background:{{teams[it-1].color}};" class="span">
+                      </span>
+
+                    </block>
+
+                    <text class="txt1">{{item.displayorder}}{{item.plant}}</text>
+
+                  </view>
+                </block>
+                <block wx:else>
+
+                  <view class="poi blue" id="{{index}}">
+                    <view class="center">
+                      <text class="txt">{{item.displayorder}}{{item.plant}}</text>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+            <block wx:else>
+              <block wx:if="{{item.ptype==1}}">
+                <view class="poi green" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:elif="{{item.ptype==3}}">
+                <view class="poi" id="{{index}}" style="border: 1rpx solid #fff;background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="poi blue" id="{{index}}" style="background:{{teams[item.owner-1].color}}">
+                  <view class="center">
+                    <text class="txt"> {{item.displayorder}}{{item.plant}}</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+          </block>
+        </block> -->
+      </block>
+
+    </view>
+
+    <view class='slogan'>
+      <text class='linear'></text>
+      <text style='font-size:24rpx;position:relative;bottom:4rpx;'>◆</text>
+      <text>◇ </text>
+      <text style="font-size:32rpx;">让世界更好玩</text>
+      <text>◇</text>
+      <text style='font-size:24rpx;position:relative;bottom:4rpx;'>◆</text>
+      <text class='linear2'></text>
+    </view>
+
+  </view>
+  <!-- 欢迎 -->
+  <view class="mask" hidden="{{isStartGame}}">
+    <view class="tip-box">
+      <text class="wel-txt">
+      欢迎来到大商之道！大商之道是一款占地发展产业获得财富值而后进行交易买卖的策略互动竞争游戏。       在游戏主界面，分布了''公告栏'','''队伍'',''图钱''，''寻宝''，''背包''，''记录''，''账房''，''连连看''，''49宫格''，''拍卖''系统，''心流''等多种玩法。
+          那么接下来一起跟着瓢瓢一起进入大商之道的世界吧！
+      </text>
+      <view style="margin-top: 40rpx;">
+        <block wx:if="{{!getuserinfo}}">
+          <button class="start-btn btn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">开始游戏</button>
+        </block>
+        <block wx:else>
+          <button class="start-btn btn" bindtap="startGame">开始游戏</button>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 背包 -->
+  <view class="mask" hidden="{{hideBox}}">
+    <view class="close " bindtap="closeBox">×</view>
+    <view class="jewl-box">
+      <view class="tab">
+        <text class="item {{jewelTab==index?'active':''}}" wx:for="{{navTab}}" bindtap="changeTab" wx:key="{{index}}" data-idx="{{index}}">{{item}}</text>
+      </view>
+      <view class="jewellist" hidden="{{jewelTab!=0}}">
+        <view class="stone-items">
+          <block wx:for="{{stones}}" wx:for-index="index" wx:key="index" wx:for-item="item">
+            <view class="stone-item" hidden="{{act.cat==1 && (index==0 || index==2 || index==4 || index==6) ? true:false}}">
+              <view class="stonepic">
+                <block wx:if="{{index==0 && (act.cat==0 || act.cat==2)}}">
+
+                  <block wx:if="{{item.stone1>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==1}}">
+                  <block wx:if="{{item.stone2>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==2 && (act.cat==0 || act.cat==2)}}">
+                  <block wx:if="{{item.stone3>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==3}}">
+                  <block wx:if="{{item.stone4>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==4 && (act.cat==0 || act.cat==2)}}">
+                  <block wx:if="{{item.stone5>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==5}}">
+                  <block wx:if="{{item.stone6>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+                <block wx:elif="{{index==6 && (act.cat==0 || act.cat==2)}}">
+                  <block wx:if="{{item.stone7>0}}">
+                    <image src="{{item.pic1}}" class="pic1" bindtap="viewStone" id="{{index}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image src="{{imgUrl}}wanba/img/gamepic/greystone.png" class="pic1" id="{{index}}"></image>
+                  </block>
+                </block>
+              </view>
+              <view class="stonename">
+                <block wx:if="{{index==0 && (act.cat==0 || act.cat==2)}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone1>0}}">
+                    X{{item.stone1}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==1}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone2>0}}">
+                    X{{item.stone2}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==2 && (act.cat==0 || act.cat==2)}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone3>0}}">
+                    X{{item.stone3}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==3}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone4>0}}">
+                    X{{item.stone4}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==4 && (act.cat==0 || act.cat==2)}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone5>0}}">
+                    X{{item.stone5}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==5}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone6>0}}">
+                    X{{item.stone6}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+                <block wx:elif="{{index==6  && (act.cat==0 || act.cat==2)}}">
+                  {{item.name}}
+                  <block wx:if="{{item.stone7>0}}">
+                    X{{item.stone7}}
+                  </block>
+                  <block wx:else>
+                    X0
+                  </block>
+                </block>
+              </view>
+            </view>
+          </block>
+        </view>
+
+        <view class="lowerBtn">
+          <block wx:if="{{stones[0].stone1>0 && stones[1].stone2>0  && stones[2].stone3>0 && stones[3].stone4>0  && stones[4].stone5>0 && stones[5].stone6>0 && stones[6].stone7>0 && act.status==0 }}">
+            <image src="{{imgUrl}}wanba/img/gamepic/getwanba1.png" class="btnimg" bindtap="getWanba"></image>
+          </block>
+          <block wx:else>
+            <image src="{{imgUrl}}wanba/img/gamepic/getwanbagrey1.png" class="btnimg"></image>
+          </block>
+        </view>
+        <!-- <view class="jewel" wx:for="{{jewelList}}" wx:key="{{index}}" bindtap="toJewelDe">
+          <view class="img"></view>
+          <view class="jewel-ex"> 现实宝石 1</view>
+        </view> -->
+      </view>
+      <view class="jewellist" hidden="{{jewelTab!=1}}">
+        <view class="jewel" bindtap="showYJKdetail" wx:for="{{cards}}" wx:key="{{index}}" data-idx="{{index}}">
+          <view class="img">
+            <block wx:if="{{item==0}}">
+              <image src="{{genius[index].ykj_grey}}" mode='widthFix'></image>
+            </block>
+            <block wx:else>
+              <image src="{{genius[index].ykj_grey}}" mode='widthFix'></image>
+            </block>
+          </view>
+          <view class="jewel-ex"> {{genius[index].name}}特殊卡*{{item}}</view>
+        </view>
+        <!-- <view class="jewel" bindtap="showYJKdetail" id="2">
+          <view class="img">
+            <image src="https://img.wondfun.com/dszd/img/genius/2.png" mode='widthFix'></image>
+          </view>
+          <view class="jewel-ex"> 粮特殊卡*{{cards.card2}}</view>
+        </view>
+        <view class="jewel">
+          <view class="img">
+            <image src="https://img.wondfun.com/dszd/img/genius/3.png" mode='widthFix'></image>
+          </view>
+          <view class="jewel-ex"> 布特殊卡*{{cards.card3}}</view>
+        </view>
+        <view class="jewel">
+          <view class="img">
+            <image src="https://img.wondfun.com/dszd/img/genius/4.png" mode='widthFix'></image>
+          </view>
+          <view class="jewel-ex"> 茶特殊卡*{{cards.card4}}</view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <!-- 宝石详情 -->
+  <!-- <view class="mask" hidden="{{!jewelDetail}}">
+    <view class="jewel-detail">
+      <view class="fr clearfix close2" bindtap="closeJewelDetail">×</view>
+      <view class="img-box">
+        <image  src="{{stoneSelected.pic1}}"></image>
+      </view>
+      <view class="" style="text-align: center;">{{stoneSelected.name}}</view>
+      <view style="text-align: center;">{{stoneSelected.memo1}}
+        </view>
+      <view class="txt-box">
+        <view>
+          <view class="fl clearfix" style="width:80rpx;">说明：</view>
+          <text style="display:inline-block;text-align:left; width:480rpx;">{{stoneSelected.memo2}}
+           </text>
+        </view>
+        <view>
+          <view class="fl clearfix" style="width:80rpx;">备注：</view>
+          <text style="display:inline-block;text-align:left;width:480rpx;">{{stoneSelected.memo3}}
+            </text>
+        </view>
+
+      </view>
+
+      <view style="margin-top:30rpx;">
+        <button class="btn">使用宝石</button>
+      </view>
+      <view style="margin-top:20rpx;">
+        <button class="btn" bindtap="toInputM">出售</button>
+      </view>
+    </view>
+  </view> -->
+  <!-- 查看宝石 -->
+  <view class="modal-box" hidden="{{hideStone}}">
+
+    <view class="modal-body">
+
+      <view class="modal-content-stone">
+        <view class="fr clearfix close2" bindtap="closeJewelDetail">×</view>
+        <view class="upper">
+
+          <image src="{{stoneSelected.pic2}}" class="boximg"></image>
+        </view>
+
+        <view class="middle">
+          <view class="m1">
+            {{stoneSelected.memo1}}
+          </view>
+          <view class="m2">
+            <text class="c1">{{stoneSelected.memo2}}</text>
+            <text class="c1">{{stoneSelected.memo3}}</text>
+            <text class="c2">{{stoneSelected.memo4}}</text>
+          </view>
+        </view>
+        <view class="lowerBtn" wx:if="stoneSelected.stone1>0 || stoneSelected.stone2>0  || stoneSelected.stone3>0 || stoneSelected.stone4>0 || stoneSelected.stone5>0 || stoneSelected.stone6>0 || stoneSelected.stone7>0">
+          <view style="margin-top:30rpx;">
+            <button class="btn" bindtap="useStone">使用宝石</button>
+          </view>
+          <view style="margin-top:20rpx;">
+            <button class="btn" bindtap="tosellJewel">出售</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 使用宝石 -->
+  <view class="modal-box" hidden="{{hideUseStone}}">
+
+    <view class="modal-body">
+      <block wx:if="{{stoneSelected.id==4}}">
+        <view class="modal-content-use-stone">
+          <view class="title">请选择要心灵操控的队伍</view>
+          <picker-view indicator-class="indicator" mask-class="mask" class="selectedteam" value="{{teamvalue}}" bindchange='getSelectedTeam'>
+            <picker-view-column>
+              <view wx:for="{{teams_nomyteam}}" wx:key="index" style="line-height: 50rpx">
+                {{item.name}}
+
+              </view>
+            </picker-view-column>
+
+          </picker-view>
+          <view class="warn">
+
+          </view>
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==2}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">确定要使用{{stoneSelected.name}}</view>
+
+          <view class="warn">
+
+          </view>
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==1}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">确定要使用{{stoneSelected.name}}?</view>
+          <input class="input" value="{{landIdhold}}" placeholder='请输入要抢夺的地块编号' placeholder-class='input-placeholder' bindinput='updatelandIdhold'></input>
+
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==7}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">确定要使用{{stoneSelected.name}}?</view>
+          <input class="input" value="{{landIdhold}}" placeholder='请输入要清除的地块编号' placeholder-class='input-placeholder' bindinput='updatelandIdhold'></input>
+
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==3}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">用{{stoneSelected.name}}互换地块</view>
+          <view style="width:80%;display:inline-block;height:60rpx;margin:0 10% 30rpx 10%;">
+            <input class="input3" value="{{landIdexchange1}}" placeholder='' placeholder-class='input-placeholder' bindinput='updatelandIdexchange1'></input>
+            <input class="input3" value="{{landIdexchange2}}" placeholder='' placeholder-class='input-placeholder' bindinput='updatelandIdexchange2'></input>
+          </view>
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==6}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">确定要使用{{stoneSelected.name}}？</view>
+
+          <view class="warn">
+            可抵御攻击一次
+          </view>
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{stoneSelected.id==5}}">
+        <view class="modal-content-use-stone-2">
+          <view class="title">确定要使用{{stoneSelected.name}}？</view>
+
+          <view class="warn">
+            可以看全局信息3分钟
+          </view>
+          <view class="modal-btn">
+            <image src="https://img.wondfun.com/wanba/img/gamepic/cancel_btn.png" class="cancel_btn" bindtap='cancelUseStone'></image>
+            <image src="https://img.wondfun.com/wanba/img/gamepic/confirm_btn.png" class="cancel_btn" style='padding-left:5px;' bindtap='confirmUseStone'></image>
+          </view>
+        </view>
+      </block>
+
+    </view>
+  </view>
+  <!-- 宝石出售 -->
+  <view class="mask" hidden="{{sellMoney}}">
+    <view class="sellYJK">
+      <view style="margin-top:20rpx;">宝石</view>
+      <input placeholder="请输入金额" class="input" style="margin-top:20rpx;" bindinput="updateMoneyInputJewel" type="number"></input>
+      <view style="margin-top:30rpx;">
+        <button class="but" bindtap="closeSell">取消</button>
+        <button class="but" bindtap="sureSellJewel" style="margin-left:60rpx">确定</button>
+      </view>
+    </view>
+  </view>
+  <!-- 种植 -->
+  <view class="mask" hidden="{{!plant}}">
+    <view class="close " bindtap="closePlant">×</view>
+    <view class="plant">
+      <view style="text-align:center;">当前地块属性：盐</view>
+      <view class="ch">请选择经营的产业</view>
+      <radio-group class="radio-group" bindchange="changeRadio">
+        <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+          <text>{{item.value}}</text>
+        </radio>
+      </radio-group>
+
+      <view class="ch money">投资金额:400</view>
+      <view class="ch">溢价卡：</view>
+      <view class="total">预计总收益</view>
+      <view>
+        <button class="btn">确定</button>
+      </view>
+    </view>
+  </view>
+  <!-- 溢价卡详情 -->
+  <view class="mask" hidden="{{isHideYJKdetail}}">
+    <view class="yjk-box">
+      <view class="fr close2" style="font-size:40rpx;" bindtap="closeYJK">×</view>
+      <view class="imgbox" style="clear: both;margin-top:70rpx">
+        <image src="{{genius[currentyjk].yjkdetail}}" style="width:220rpx;height:220rpx;"></image>
+      </view>
+      <view class="text">恭喜您获得{{genius[currentyjk].name}}溢价卡</view>
+      <view>{{genius[currentyjk].memo1}}</view>
+      <view class="text-box">{{genius[currentyjk].memo2}}</view>
+      <view class="btn-box">
+        <button class="btn" bindtap="showSellYJK">出售</button>
+      </view>
+    </view>
+  </view>
+  <!-- 出售溢价卡 -->
+  <view class="mask" hidden="{{isHideSellYJK}}">
+    <view class="sellYJK">
+      <view style="margin-top:20rpx;">{{genius[currentyjk].name}}溢价卡</view>
+      <input placeholder="请输入金额" class="input" style="margin-top:20rpx;" bindinput="updateMoneyInput"></input>
+      <view style="margin-top:30rpx;">
+        <button class="but" bindtap="cancelSellYJK">取消</button>
+        <button class="but" bindtap="sureSellYJK" style="margin-left:60rpx">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<view class="nav">
+  <scroll-view scroll-x="true" class="scroll-view-demo">
+    <view class="item {{currentTab==index ? 'active' : ''}}" wx:for="{{tabs}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="navbarTap">
+      {{item}}
+    </view>
+  </scroll-view>
+</view>

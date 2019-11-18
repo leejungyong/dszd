@@ -1,0 +1,17 @@
+/* pages/start/share.wxss */
+.qrcode{
+  text-align: center;
+  margin-top:20rpx;
+  margin-bottom: 20rpx;
+}
+.green-btn{
+  width: 620rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  background-color: rgba(56, 181, 54, 1);
+  text-align: center;
+  color: white;
+  margin-top: 40rpx;
+  font-size: 28rpx;
+}

@@ -1,0 +1,12 @@
+<!--pages/game/answer.wxml-->
+<view class='logo' >
+  <image src="../../icon/LOGO.png"></image>
+</view>
+<view class="box">
+<input class="txt" placeholder="输入任务完成情况，上传照片或视频"></input>
+<!-- <image ></image> -->
+</view>
+
+<view class="btn-box">
+  <button class="btn" bindtap="submit">提交</button>
+</view>

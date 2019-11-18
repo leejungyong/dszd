@@ -1,0 +1,76 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"coverView": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.3",
+	"appid": "wx4ff22612f1ac6f35",
+	"projectname": "%E5%A4%A7%E5%95%86%E4%B9%8B%E9%81%93",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "游戏首页",
+					"pathName": "pages/game/game",
+					"query": "aid=26",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/game/xiuxiu3",
+					"pathName": "pages/game/xiuxiu3",
+					"query": "aid=26",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "管理",
+					"pathName": "pages/game/manage",
+					"query": "aid=26",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/game/gift",
+					"pathName": "pages/game/gift",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

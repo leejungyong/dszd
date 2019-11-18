@@ -1,0 +1,39 @@
+<!--pages/game/borrow.wxml-->
+<view class="borrow">
+  <view>
+    <view class="text">
+      借款人：{{teamname}}
+    </view>
+  </view>
+  <view style="margin-top:40rpx;">
+
+    <view class="text star">
+      贷出金额
+    </view>
+    <input class="input" placeholder-class="pl-color" disabled="true" value="{{money}}"></input>
+  </view>
+  <view style="margin-top:20rpx;">
+    <view class="text star">
+      利率%
+    </view>
+    <input class="input"  placeholder-class="pl-color" disabled="true" value="{{rate}}"></input>
+  </view>
+
+  <view style="margin-top:50rpx;">
+    <view class="text star">
+      收款时间
+    </view>
+    <view class="input" bindtap="showSelect">
+      {{steps[deadline]}}
+    </view>
+  </view>
+  <view style="margin-top:50rpx;">
+    <view class="com">总利息:{{interest}}</view>
+    <view class="com">总收款金额:{{total}}</view>
+  </view>
+
+</view>
+
+<view>
+  <button class="btn" bindtap="sure">确定</button>
+</view>

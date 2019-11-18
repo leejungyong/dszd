@@ -1,0 +1,36 @@
+/* pages/game/answer.wxss */
+page{
+  background: var(--background-black);
+}
+.logo{
+  text-align: center;
+}
+.logo image{
+  width: 520rpx;
+  height: 250rpx;
+}
+
+.box{
+  width: 640rpx;
+  height: 520rpx;
+  border-radius: 20rpx;
+  background-color:var(--blue) ;
+  border: 2rpx solid var(--yellow);
+  margin: 0 auto;
+}
+.box .txt{
+  width: 560rpx;
+  height: 250rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid rgba(70, 96, 125, 0.93);
+  margin: 20rpx auto 0 auto;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.btn-box{
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
